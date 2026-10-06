@@ -28,9 +28,9 @@ try:
                     "VDD_GPU_SOC-IN_CURRENT_mA",
                     "VDD_GPU_SOC-IN_POWER_mW",
                     "VDD_GPU_SOC-AVG_POWER_mW",
-                    "GPU_SHARED_MEMORY_MB",
-                    "USED_MEMORY_MB",
-                    "TOTAL_MEMORY_MB"
+                    "GPU_SHARED_MEMORY_GB",
+                    "USED_MEMORY_GB",
+                    "TOTAL_MEMORY_GB"
                 ]
 
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -52,9 +52,9 @@ try:
                     
                     # Access RAM statistics
                     ram = jetson.memory["RAM"]
-                    # Convert from KB to MB
-                    total_memory = ram["tot"]/1024
-                    used_memory = ram["used"]/1024
+                    # Convert from KB to GB
+                    total_memory = ram["tot"]/1048576
+                    used_memory = ram["used"]/1048576
 
                     row = {
                         "Time": datetime.now(),
@@ -76,15 +76,15 @@ try:
                             gpu_rail["avg"],
 
                         # GPU shared memory in megabytes
-                        "GPU_SHARED_MEMORY_MB":
+                        "GPU_SHARED_MEMORY_GB":
                             gpu_memory,
                         
                         # Measuring memory in use from RAM
-                        "USED_MEMORY_MB":
+                        "USED_MEMORY_GB":
                             used_memory,
                             
                         # Total memory in RAM for reference
-                        "TOTAL_MEMORY_MB":
+                        "TOTAL_MEMORY_GB":
                             total_memory
                         
                     }   
