@@ -1,3 +1,4 @@
+# bella m 10/5/2026
 # also need to pull the model
 # example: ollama pull moondream:latest
 
