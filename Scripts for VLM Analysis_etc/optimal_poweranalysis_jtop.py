@@ -9,9 +9,9 @@ from datetime import datetime
 import csv
 import time
 
-output_file = "Moondream_poweranalysis_MAXN_noattack_10-2-26.csv"
-interval = 30 # Time between logs in seconds
-duration = 20 * 60 # Duration to log data in seconds
+output_file = input("Enter a file name (end it with .csv): \n")
+interval = int(input("Enter a time interval to adjust the sampling rate (e.g. entering 10 means measurements will be taken every 10 seconds): \n"))
+duration = int(input("Enter duration to log data: \n")) * 60 # Duration to log data in seconds
 start_time = time.monotonic()
 
 try:
