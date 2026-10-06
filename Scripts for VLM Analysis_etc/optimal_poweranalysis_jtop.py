@@ -75,7 +75,7 @@ try:
                         "VDD_GPU_SOC-AVG_POWER_mW":
                             gpu_rail["avg"],
 
-                        # GPU shared memory in megabytes
+                        # GPU shared memory in gigabytes
                         "GPU_SHARED_MEMORY_GB":
                             gpu_memory,
                         
