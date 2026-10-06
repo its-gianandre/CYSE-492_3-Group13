@@ -6,6 +6,7 @@
 // Run:
 //   ./gpu_cache_thrash scan 60 256     # brute-force: stream a 256MB buffer continuously
 //   ./gpu_cache_thrash pin  60         # evict_last pinning attack, mostly idle
+//   ./gpu_cache_thrash pin 60 1300     # run attack for 60 seconds with clock speed 
 //
 // 2 modes in the paper:
 //   - "scan" continuously floods the cache with new reads ~10% victim
