@@ -1,7 +1,7 @@
 # bella m 10/5/2026
 # also need to pull the model
 # example: ollama pull moondream:latest
-
+# to run in bash:  python3 vlm_webcam.py
 # The code below follows the basic usage from: https://github.com/ollama/ollama-python
 
 from ollama import chat
