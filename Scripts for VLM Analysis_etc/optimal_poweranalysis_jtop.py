@@ -48,7 +48,7 @@ try:
                     gpu_rail = jetson.power["rail"]["VDD_GPU_SOC"]
 
                     # Obtaining shared memory of GPU
-                    gpu_memory = jetson.memory["RAM"]["shared"] / 1024
+                    gpu_memory = jetson.memory["RAM"]["shared"] / 1048576
                     
                     # Access RAM statistics
                     ram = jetson.memory["RAM"]
