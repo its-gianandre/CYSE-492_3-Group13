@@ -8,6 +8,9 @@ CYSE 492/493 Repo
 
 ## Directory:
 [Research Papers on various Attacks](./Attacks/)
+
 [Scripts for VLM Analysis](./Scripts%20for%20VLM%20Analysis_etc/)
+
 [CSV Data](./CSV_Data/)
+
 [Jupyter Notebooks (Documentation)](./Notebooks/)
