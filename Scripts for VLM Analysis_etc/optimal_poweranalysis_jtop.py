@@ -10,8 +10,8 @@ import csv
 import time
 
 output_file = input("Enter a file name (end it with .csv): \n")
-interval = int(input("Enter a time interval to adjust the sampling rate (e.g. entering 10 means measurements will be taken every 10 seconds): \n"))
-duration = int(input("Enter duration to log data: \n")) * 60 # Duration to log data in seconds
+interval = float(input("Enter a time interval to adjust the sampling rate (e.g. entering 10 means measurements will be taken every 10 seconds): \n"))
+duration = float(input("Enter duration to log data: \n")) * 60 # Duration to log data in seconds
 start_time = time.monotonic()
 
 try:
@@ -36,7 +36,7 @@ try:
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
                 
-                print(f"Beginning logging process for {duration//60} minutes")
+                print(f"Beginning logging process for {duration/60:.2f} minute(s)")
                 
                 while jetson.ok():
 
