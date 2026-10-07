@@ -4,6 +4,11 @@
 # to run in bash:  python3 vlm_webcam.py
 # The code below follows the basic usage from: https://github.com/ollama/ollama-python
 
+# also need to pull the model
+# example: ollama pull moondream:latest
+
+# The code below follows the basic usage from: https://github.com/ollama/ollama-python
+
 from ollama import chat
 from ollama import ChatResponse
 from webcam import Webcam #(code related to this module is from here: https://pypi.org/project/webcam/)
@@ -12,11 +17,9 @@ import cv2
 import time
 
 # Set this to True to force Ollama to UNLOAD the model from GPU memory after every
-# single frame, so the next frame has to pay a full reload cost instead of reusing an
-# already-loaded model 
-# run once with this False (normal) and once with this True (degraded), and compare
-# the two resulting power/timing logs from your jtop script
-EVICT_MODEL_EVERY_FRAME = False  # change this line to True for degradation
+# run once with this False (normal) and once with this True (degraded)
+
+EVICT_MODEL_EVERY_FRAME = False
 
 print('\n\n Starting VLM prompt process, please start the power analysis script at the same time', end='\n\n')
 if EVICT_MODEL_EVERY_FRAME:
@@ -30,23 +33,30 @@ camera = Webcam(src=0, w=1080, h=1920, as_bgr=True) #logitech c920 is 1920x1080p
 try: 
 
 	while True:
-		grabbed, frame = camera.read() # Pull the newest available frame from the camera
+		# Pull the newest available frame from the camera.
+		grabbed, frame = camera.read()
 
 		if not grabbed:
-			# Camera disconnected, busy, or failed to return a frame 
+			# Camera disconnected, busy
 			raise RuntimeError("Camera did not return a frame")
 
-		success, buffer = cv2.imencode(".jpg", frame) #encode the raw frame as JPEG bytes in memory
+		# Encode the raw frame as JPEG bytes in memory -- Ollama's images field expects
+		success, buffer = cv2.imencode(".jpg", frame)
 		if not success:
 			raise RuntimeError("Could not encode frame")
 
 		image_bytes = buffer.tobytes()
 		
 		print("\n\nPrompting Model With Input Now", end='\n\n')
-        
-		#send the frame + prompt to the model and wait for a full response.
+
+		# Record the time right before sending the request, so we can measure how
+		# long the model actually took to respond 
+		request_start = time.time()
+
+		# Send the frame + prompt to the model and wait for a full response
 		response: ChatResponse = chat(
-        	model = 'minicpm-v4.6:latest', #change model here if using other model 
+		# Change Model as needed
+        	model = 'minicpm-v4.6:latest',
         	messages =[ 
             	{
                 	'role' : 'user',
@@ -54,17 +64,24 @@ try:
 			"images": [image_bytes],  # the actual image data sent to the VLM
            	 },
         		],
-		# "5m" (default) keeps the model loaded in GPU memory between calls
-		# "0" unloads it after every single response, forcing every request to reload from scratch 
+		# "5m" (default) keeps the model loaded in GPU memory between calls, so only
+		# the FIRST request pays a load cost. "0" unloads it immediately after every
+		# single response, forcing every request to reload from scratch 
 		keep_alive = 0 if EVICT_MODEL_EVERY_FRAME else "5m",
     		)
-		print(f'\n\nVLMs Response: {response.message.content}', end = '\n\n') 
-		#time.sleep(2)   # optional pause between frames, currently disabled, so this loops as fast as the camera + model allow
+
+		request_end = time.time()
+		latency = request_end - request_start
+
+		print(f'\n\nVLMs Response: {response.message.content}', end = '\n\n')
+		print(f'Response latency: {latency:.2f} seconds', end='\n\n')
+		#time.sleep(2)   # optional pause between frames -- currently disabled, so this loops as fast as the camera + model allow
 
 except KeyboardInterrupt:
 	print("\nStopped by user.")
 
 finally:
-	camera.release() #release the camera device on exit
+	# Always release the camera device on exit
+	camera.release()
 
 print('\n\n End of VLM Prompt Process, please check the power analysis results', end= '\n\n')
