@@ -33,10 +33,6 @@ import sys
 # Open and read the camera
 camera = Webcam(src=0, w=720, h=1280, as_bgr=True) #logitech c270 is 1280x720p resolution
 
-#Suspiciouns that camera doesn't work since the device is very slow
-print("Waiting 30s for proper camera set up")
-time.sleep(30) #wait 30s
-
 data_to_csv =[]
 num_prompt = 0
 
