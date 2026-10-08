@@ -81,9 +81,11 @@ try:
 				)
 
 			t_final = time.time()
-			print(f'\n\nVLMs Response: {response.message.content}', end = '\n\n')
+			print(f'\n\nVLMs Response: {response.message.content}')
 
 			t_latency = t_final - t_init
+
+			print(f'Current VLM Response Latency: {t_latency}', end='\n\n')
 
 			num_prompt += 1
 
