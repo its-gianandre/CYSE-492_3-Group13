@@ -42,7 +42,7 @@ PID_origin=$$
 
 echo "terminating power_analysis.py"
 kill $PID_power
-echo "terminating VLM_LiveVideo_Prompting_Latnecy.py"
+echo "terminating VLM_LiveVideo_Prompting_Latency.py"
 kill $PID_latency
 
 echo "script ellapsed 20 minutes, terminated scripts"
