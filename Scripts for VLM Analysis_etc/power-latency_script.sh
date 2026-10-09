@@ -28,7 +28,7 @@ SECONDS=0
 #20 below stands for 20 minutes
 python power_analysis.py $1 20 $3 &
 PID_power=$!
-python VLM_LiveVideo_Prompting_Latency_NANO.py $2 $4 &
+python VLM_LiveVideo_Prompting_Latency.py $2 $4 &
 PID_latency=$!
 
 duration=$SECONDS
@@ -40,8 +40,10 @@ done
 
 PID_origin=$$
 
+echo "terminating power_analysis.py"
 kill $PID_power
+echo "terminating VLM_LiveVideo_Prompting_Latnecy.py"
 kill $PID_latency
 
-echo "script ellapsed 20 minutes, terminating scripts"
+echo "script ellapsed 20 minutes, terminated scripts"
 kill $PID_origin
