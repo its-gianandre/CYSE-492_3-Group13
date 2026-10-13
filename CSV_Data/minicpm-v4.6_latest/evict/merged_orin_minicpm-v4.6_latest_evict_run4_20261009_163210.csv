@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 16:32:11.946483,12024,380,4569,4569,144.5390625,1,14.988,"The video feed shows a person seated at a table in a well-lit conference room, likely engaged in a work or discussion related to the setting's profess"
+2026-10-09 16:32:26.946795,12008,440,5283,4941,2616.19140625,1,14.988,"The video feed shows a person seated at a table in a well-lit conference room, likely engaged in a work or discussion related to the setting's profess"
+2026-10-09 16:32:41.947065,12024,380,4569,4573,927.34765625,2,15.407,"A person wearing glasses is seated at a wooden table in a bright office room, seemingly engaged in a discussion or work session."
+2026-10-09 16:32:56.947344,12024,380,4569,4575,927.34765625,3,16.111,"A person wearing glasses is seated at a table in a bright conference room, seemingly focused on the items or documents on the surface."

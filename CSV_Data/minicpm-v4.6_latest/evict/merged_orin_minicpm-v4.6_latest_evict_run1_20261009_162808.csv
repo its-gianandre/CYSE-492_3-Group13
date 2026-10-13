@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 16:28:09.569242,12024,380,4569,4569,2702.7109375,1,2.355,"A person with glasses is seated at a table in a brightly lit office or meeting room, seemingly focused on something or interacting with materials on t"
+2026-10-09 16:28:24.569552,12024,380,4569,4590,927.34765625,2,16.807,"A person with glasses is seated at a table in a bright, office-like room, seemingly engaged in a meeting or work-related activity."
+2026-10-09 16:28:39.569820,12024,380,4569,4657,1183.37890625,3,15.035,"A person with glasses is seated at a table in a well-lit conference room, with chairs and tableware visible nearby."
+2026-10-09 16:28:54.570077,12024,380,4569,4646,1183.37890625,4,14.389,A person wearing glasses is seated at a conference table in a brightly lit office or meeting room.
