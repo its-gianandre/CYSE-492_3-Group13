@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 17:46:55.444115,12024,380,4569,4569,9100.3359375,1,0.633,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+2026-10-09 17:47:10.444413,11800,2140,25252,26377,9100.3359375,22,0.622,urns of light are on the ceiling in a room with a man sitting at a table.
+2026-10-09 17:47:25.444674,11792,2340,27593,27683,9100.3359375,47,0.586,"urns of light are on the ceiling, illuminating a room with a wooden door and a table."
+2026-10-09 17:47:40.444928,11784,2380,28045,28194,9100.3359375,72,0.629,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."

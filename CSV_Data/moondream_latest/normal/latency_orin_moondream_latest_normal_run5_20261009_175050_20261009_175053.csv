@@ -1,0 +1,100 @@
+frame,time,latency_s,response_preview
+1,2026-10-09 17:50:53,0.65,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+2,2026-10-09 17:50:54,0.616,"urns of light are on the ceiling, illuminating a room with a wooden door and a table with a laptop."
+3,2026-10-09 17:50:54,0.572,urns of light are on the ceiling in a room with a man sitting at a table.
+4,2026-10-09 17:50:55,0.621,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+5,2026-10-09 17:50:56,0.619,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+6,2026-10-09 17:50:56,0.632,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+7,2026-10-09 17:50:57,0.635,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+8,2026-10-09 17:50:58,0.644,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+9,2026-10-09 17:50:58,0.637,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+10,2026-10-09 17:50:59,0.588,"urns of light are on the ceiling, illuminating a room with a white wall and a door."
+11,2026-10-09 17:50:59,0.629,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+12,2026-10-09 17:51:00,0.628,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+13,2026-10-09 17:51:01,0.631,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+14,2026-10-09 17:51:01,0.637,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+15,2026-10-09 17:51:02,0.627,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+16,2026-10-09 17:51:03,0.604,"urns of light are on the ceiling, illuminating a room with a white wall and a wooden door."
+17,2026-10-09 17:51:03,0.629,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+18,2026-10-09 17:51:04,0.63,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+19,2026-10-09 17:51:04,0.625,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+20,2026-10-09 17:51:05,0.584,urns of light are on the ceiling in a room with a man sitting at a desk.
+21,2026-10-09 17:51:06,0.619,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+22,2026-10-09 17:51:06,0.572,urns of light are on the ceiling in a room with a man sitting at a table.
+23,2026-10-09 17:51:07,0.628,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+24,2026-10-09 17:51:07,0.571,urns of light are on the ceiling in a room with a man sitting at a table.
+25,2026-10-09 17:51:08,0.576,"urns of light are on the ceiling, illuminating a room with a wooden door and a desk."
+26,2026-10-09 17:51:09,0.623,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+27,2026-10-09 17:51:09,0.57,urns of light are on the ceiling in a room with a man sitting at a desk.
+28,2026-10-09 17:51:10,0.621,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+29,2026-10-09 17:51:10,0.571,urns of light are on the ceiling in a room with a man sitting at a desk.
+30,2026-10-09 17:51:11,0.615,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+31,2026-10-09 17:51:12,0.568,urns of light are on the ceiling in a room with a man sitting at a table.
+32,2026-10-09 17:51:12,0.569,urns of light are on the ceiling in a room with a man sitting at a desk.
+33,2026-10-09 17:51:13,0.617,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+34,2026-10-09 17:51:13,0.619,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+35,2026-10-09 17:51:14,0.567,urns of light are on the ceiling in a room with a man sitting at a table.
+36,2026-10-09 17:51:15,0.569,urns of light are on the ceiling in a room with a man sitting at a desk.
+37,2026-10-09 17:51:15,0.634,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+38,2026-10-09 17:51:16,0.582,"urns of light are on the ceiling, illuminating a room with a wooden door and a table."
+39,2026-10-09 17:51:16,0.622,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+40,2026-10-09 17:51:17,0.617,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+41,2026-10-09 17:51:18,0.566,urns of light are on the ceiling in a room with a man sitting at a desk.
+42,2026-10-09 17:51:18,0.566,urns of light are on the ceiling in a room with a man sitting at a desk.
+43,2026-10-09 17:51:19,0.579,"urns of light are on the ceiling, illuminating a room with a white wall and a door."
+44,2026-10-09 17:51:19,0.58,"urns of light are on the ceiling, illuminating a room with a white wall and a door."
+45,2026-10-09 17:51:20,0.625,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+46,2026-10-09 17:51:21,0.617,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+47,2026-10-09 17:51:21,0.592,"urns of light are on the ceiling, illuminating a room with a wooden door and a table."
+48,2026-10-09 17:51:22,0.578,"urns of light are on the ceiling, illuminating a room with a wooden door and a table."
+49,2026-10-09 17:51:22,0.619,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+50,2026-10-09 17:51:23,0.57,urns of light are on the ceiling in a room with a man sitting at a desk.
+51,2026-10-09 17:51:24,0.57,urns of light are on the ceiling in a room with a man sitting at a desk.
+52,2026-10-09 17:51:24,0.63,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+53,2026-10-09 17:51:25,0.573,urns of light are on the ceiling in a room with a man sitting at a table.
+54,2026-10-09 17:51:25,0.587,"urns of light are on the ceiling, illuminating a room with a wooden door and a table."
+55,2026-10-09 17:51:26,0.622,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+56,2026-10-09 17:51:27,0.557,urns of light are on the ceiling in a room with a door and a table.
+57,2026-10-09 17:51:27,0.568,urns of light are on the ceiling in a room with a man sitting at a desk.
+58,2026-10-09 17:51:28,0.683,urns of light are on the ceiling in a room with a wooden door.  2. A man is sitting at a desk in the room.
+59,2026-10-09 17:51:29,0.618,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+60,2026-10-09 17:51:29,0.566,urns of light are on the ceiling in a room with a man sitting at a desk.
+61,2026-10-09 17:51:30,0.569,urns of light are on the ceiling in a room with a man sitting at a desk.
+62,2026-10-09 17:51:30,0.568,urns of light are on the ceiling in a room with a man sitting at a desk.
+63,2026-10-09 17:51:31,0.572,urns of light are on the ceiling in a room with a man sitting at a desk.
+64,2026-10-09 17:51:31,0.579,"urns of light are on the ceiling, illuminating a room with a wooden door and a desk."
+65,2026-10-09 17:51:32,0.617,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+66,2026-10-09 17:51:33,0.617,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+67,2026-10-09 17:51:33,0.619,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+68,2026-10-09 17:51:34,0.58,"urns of light are on the ceiling, illuminating a room with a wooden door and a desk."
+69,2026-10-09 17:51:34,0.616,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+70,2026-10-09 17:51:35,0.623,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+71,2026-10-09 17:51:36,0.573,urns of light are on the ceiling in a room with a man sitting at a desk.
+72,2026-10-09 17:51:36,0.624,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+73,2026-10-09 17:51:37,0.618,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+74,2026-10-09 17:51:38,0.618,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+75,2026-10-09 17:51:38,0.617,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+76,2026-10-09 17:51:39,0.681,urns of light are on the ceiling in a room with a wooden door.  2. A man is sitting at a desk in the room.
+77,2026-10-09 17:51:40,0.69,urns of light are on the ceiling in a room with a wooden door.  2. A man is sitting at a desk in the room.
+78,2026-10-09 17:51:40,0.625,"urns of light are on the ceiling, illuminating a room with a wooden door and a man in a white shirt."
+79,2026-10-09 17:51:41,0.581,"urns of light are on the ceiling, illuminating a room with a wooden door and a desk."
+80,2026-10-09 17:51:41,0.536,urns of water are on the table in front of a door. 
+81,2026-10-09 17:51:42,0.62,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+82,2026-10-09 17:51:43,0.623,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+83,2026-10-09 17:51:43,0.571,urns of light are on the ceiling in a room with a man sitting at a desk.
+84,2026-10-09 17:51:44,0.567,urns of light are on the ceiling in a room with a man sitting at a desk.
+85,2026-10-09 17:51:44,0.581,"urns of light are on the ceiling, illuminating a room with a wooden door and a desk."
+86,2026-10-09 17:51:45,0.689,urns of light are on the ceiling in a room with a wooden door.  2. A man is sitting at a desk in the room.
+87,2026-10-09 17:51:46,0.575,urns of light are on the ceiling in a room with a man sitting at a desk.
+88,2026-10-09 17:51:46,0.619,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+89,2026-10-09 17:51:47,0.581,"urns of light are on the ceiling, illuminating a room with a wooden door and a desk."
+90,2026-10-09 17:51:47,0.571,urns of light are on the ceiling in a room with a man sitting at a desk.
+91,2026-10-09 17:51:48,0.561,urns of light are on the ceiling in a room with a door and a table.
+92,2026-10-09 17:51:49,0.617,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+93,2026-10-09 17:51:49,0.572,urns of light are on the ceiling in a room with a man sitting at a desk.
+94,2026-10-09 17:51:50,0.558,urns of light are on the ceiling in a room with a door and a table.
+95,2026-10-09 17:51:50,0.624,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+96,2026-10-09 17:51:51,0.622,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+97,2026-10-09 17:51:52,0.618,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
+98,2026-10-09 17:51:52,0.582,urns of light are on the ceiling in a room with a man sitting at a desk.
+99,2026-10-09 17:51:53,0.618,"urns of light are on the ceiling, illuminating a room with a wooden door and a man sitting at a desk."
