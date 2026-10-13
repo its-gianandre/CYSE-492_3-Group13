@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 17:42:48.302228,12032,380,4572,4570,6835.421875,1,9.692,"A person is partially visible in an office room with a conference table, chairs, a door, and ceiling lights, suggesting a meeting or workspace environ"
+2026-10-09 17:43:03.302517,11864,1560,18507,18521,7183.3359375,1,9.692,"A person is partially visible in an office room with a conference table, chairs, a door, and ceiling lights, suggesting a meeting or workspace environ"
+2026-10-09 17:43:18.302782,11864,1560,18507,18567,7183.3359375,2,20.828,"A person with dark hair is partially visible near a conference table in an office space with a wooden door, ceiling lights, and a monitor."
+2026-10-09 17:43:33.303049,11872,1520,18045,18310,7183.3359375,3,11.005,"In an office meeting room, several people are seated around a conference table with a wooden door and a flat-screen monitor visible in the background."

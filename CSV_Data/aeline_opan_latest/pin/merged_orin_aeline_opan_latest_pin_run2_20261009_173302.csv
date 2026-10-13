@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 17:33:03.199746,12024,380,4569,4569,6831.8359375,,,
+2026-10-09 17:33:18.200043,11880,1620,19245,19179,6927.75,1.0,20.081,"In a conference room, a table is set with chairs, a door, and ceiling lights, where a person is seated at the table."
+2026-10-09 17:33:33.200300,11880,1600,19008,19178,6927.75,1.0,20.081,"In a conference room, a table is set with chairs, a door, and ceiling lights, where a person is seated at the table."
+2026-10-09 17:33:48.200545,11880,1620,19245,19245,6927.75,2.0,34.839,"A video feed captures a conference room scene with a wooden table, chairs, a wooden door, fluorescent ceiling lights, and a dark monitor on the wall, "

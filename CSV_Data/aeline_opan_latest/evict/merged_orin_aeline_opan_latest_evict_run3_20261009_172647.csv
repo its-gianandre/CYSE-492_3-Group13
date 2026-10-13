@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 17:26:48.702995,12024,380,4569,4569,144.5390625,,,
+2026-10-09 17:27:03.703291,12024,380,4569,4569,1783.83203125,1.0,24.449,"In the video, a conference room with a table, chairs, a wooden door, and ceiling lights is shown, with a person seated at the table and a water bottle"
+2026-10-09 17:27:18.703558,12008,420,5043,10736,234.453125,1.0,24.449,"In the video, a conference room with a table, chairs, a wooden door, and ceiling lights is shown, with a person seated at the table and a water bottle"
+2026-10-09 17:27:33.703807,12024,380,4569,4569,1527.80078125,2.0,26.332,"In an office meeting room, a person is partially visible at a conference table with chairs, a wooden door, and ceiling lights in the background."
