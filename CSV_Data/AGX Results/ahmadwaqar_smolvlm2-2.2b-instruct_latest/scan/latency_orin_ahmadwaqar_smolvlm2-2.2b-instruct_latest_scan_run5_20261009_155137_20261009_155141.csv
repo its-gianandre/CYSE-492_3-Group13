@@ -1,0 +1,55 @@
+frame,time,latency_s,response_preview
+1,2026-10-09 15:51:41,0.693,A person is sitting at a table with a door in the background.
+2,2026-10-09 15:51:43,1.043,There is a young man sitting at a table in a room with a door and a TV screen in the background.
+3,2026-10-09 15:51:44,1.3,"The video feed shows an empty conference room with a table and chairs, a door on the right side, and a television on the left side."
+4,2026-10-09 15:51:45,0.871,A person is sitting at a conference table with other chairs and a black water bottle on it.
+5,2026-10-09 15:51:45,0.554,A person is sitting at a table in a room.
+6,2026-10-09 15:51:46,1.08,"A person is sitting at a desk with an empty glass in front of them, wearing a white shirt and black headphones."
+7,2026-10-09 15:51:48,1.296,"The video feed shows a room with a person sitting at a table, surrounded by chairs, with a door and a ceiling light in the background."
+8,2026-10-09 15:51:49,1.005,"A young man with a long black hair is sitting at a desk in a room, talking to the camera."
+9,2026-10-09 15:51:50,0.963,"A young Asian man is sitting at a wooden table in a professional meeting room, talking to the camera."
+10,2026-10-09 15:51:51,1.113,A young Asian man sits at a conference table in a conference room with a yellow door and a whiteboard in the background.
+11,2026-10-09 15:51:52,1.478,"The video feed displays a room with a table and chairs, a door, a TV mounted on the wall, a light switch, and a ceiling with fluorescent lighting."
+12,2026-10-09 15:51:54,1.296,"The video feed shows an empty office room with a table and chairs, a wooden door, and a flat-screen TV mounted on the wall."
+13,2026-10-09 15:51:55,1.53,"The video shows a man sitting at a table in a room with a wooden door, a window, and a TV mounted on the wall, and the ceiling has three lights."
+14,2026-10-09 15:51:56,1.277,"A person is sitting at a table in a room with chairs around it, and there is a television mounted on the wall above the room."
+15,2026-10-09 15:51:57,0.883,"A person is sitting at a table in an empty room, with a door next to them."
+16,2026-10-09 15:51:59,1.3,"The video feed shows a person sitting at a table in an office space, with a door and a TV mounted on the wall in the background."
+17,2026-10-09 15:52:00,1.1,"The video feed shows a person sitting at a table, with a brown door and a television on the wall behind him."
+18,2026-10-09 15:52:00,0.68,A person is sitting at a table in a room with a door.
+19,2026-10-09 15:52:01,0.872,"There is a man sitting at a table in a room, with other people sitting around it."
+20,2026-10-09 15:52:03,1.497,"The video feed shows a person sitting at a table in a room with white walls and a door with a silver handle, and a television on the wall in the backg"
+21,2026-10-09 15:52:04,1.371,"The image shows a young Asian man sitting at a wooden table with a black chair next to him, and a brown wooden door is visible in the background."
+22,2026-10-09 15:52:05,0.762,A person is sitting at a table in a room with a door behind them.
+23,2026-10-09 15:52:07,2.476,"There is a person sitting at a desk with a computer, a white and brown chair is located on the left side of the room, a door is on the right side of t"
+24,2026-10-09 15:52:08,1.081,"The video feed shows a room with a wooden table and chairs, a door, and a TV mounted on the wall."
+25,2026-10-09 15:52:09,0.981,"In the video feed, there is a wooden table with black chairs, and two men sitting in the room."
+26,2026-10-09 15:52:11,1.14,"The video is showing a man sitting in a room with a wooden table, and there is a closed door in the background."
+27,2026-10-09 15:52:12,1.417,"The video feed shows a dark-haired boy sitting at a conference table in a room with white walls and a white ceiling, with a door to the right."
+28,2026-10-09 15:52:13,0.931,"A person is sitting in a room with a table and a chair, looking at a computer screen."
+29,2026-10-09 15:52:14,1.249,"The video shows a small, dimly lit room with a desk and a chair, a door, and some light fixtures on the ceiling."
+30,2026-10-09 15:52:15,1.206,"The video feed shows a person sitting in a room with a table and a door in the background, with no significant change or motion observed."
+31,2026-10-09 15:52:16,0.767,A person is sitting at a table in a conference room with a white ceiling.
+32,2026-10-09 15:52:17,1.184,"A young Asian man is sitting at a wooden conference table in an office, with a white wall and a door in the background."
+33,2026-10-09 15:52:18,0.989,A person sits in front of a table in a room with a wooden door and light fixtures on the ceiling.
+34,2026-10-09 15:52:20,1.673,"In the image, there is a young man sitting in a room with white walls and a ceiling with fluorescent lights. The room contains a table and chairs, sug"
+35,2026-10-09 15:52:21,1.506,"The video feed shows a room with a table and chairs, a TV on the wall, and a light on the ceiling, with no specific person or action taking place."
+36,2026-10-09 15:52:23,1.327,"The image captures a room with a table and chairs, a door, and a television mounted on the wall, with a person sitting in the foreground."
+37,2026-10-09 15:52:24,1.269,"A boy sitting at a wooden table in a room with a white wall, a chair, a door, and a TV on the wall."
+38,2026-10-09 15:52:25,1.086,"The video feed shows a man sitting at a conference table with a microphone in front of him, talking to the camera."
+39,2026-10-09 15:52:26,0.809,A man sitting at a table in a conference room with a door in the background.
+40,2026-10-09 15:52:28,1.916,"In the video feed, a person is sitting at a desk in a room, with a chair in front of them. There is a TV mounted on the wall, a door nearby, and a lig"
+41,2026-10-09 15:52:29,1.291,"A young man is sitting at a desk with an open book in front of him in a room with a door, whiteboard, and ceiling lights."
+42,2026-10-09 15:52:30,0.46,A wooden door is shown in the room.
+43,2026-10-09 15:52:31,1.048,"A man is sitting at a table in a room with a door, and the room is lit by fluorescent lights."
+44,2026-10-09 15:52:32,0.846,A person is sitting at a table in a room with a TV mounted on the wall.
+45,2026-10-09 15:52:33,1.52,"A young Asian man sits at a conference table in an office, wearing a white lab coat and looking down at his hands, with a yellow door visible in the b"
+46,2026-10-09 15:52:35,1.583,"A young Asian male is sitting in a modern office space with white walls and a wooden door, while a TV and a water bottle are placed on the table in fr"
+47,2026-10-09 15:52:36,1.168,"The video feed shows a man sitting at a table in an office, with a door nearby, and a ceiling with lights above."
+48,2026-10-09 15:52:37,1.118,"The video feed is showing a room with a table, chairs, a door, a television, and a ceiling with lights."
+49,2026-10-09 15:52:38,0.843,The video shows a person sitting at a table in a room with a door and television.
+50,2026-10-09 15:52:39,0.726,A man wearing a blue shirt is sitting at a table in a room.
+51,2026-10-09 15:52:40,1.122,"A young man sits in a conference room with a light-colored ceiling, a door, and a television mounted on the wall, which is a typical setting for meeti"
+52,2026-10-09 15:52:40,0.419,"The video feed shows a person sitting at a table in a conference room, facing a television mounted on the wall."
+53,2026-10-09 15:52:41,0.603,"The video feed shows a scene inside a room with a table and chairs, a door, and a light on the ceiling, and there is a person sitting at the table."
+54,2026-10-09 15:52:41,0.499,"The video feeds a room with white walls and a brown door, and a person is sitting at a table with a white bottle on it."
