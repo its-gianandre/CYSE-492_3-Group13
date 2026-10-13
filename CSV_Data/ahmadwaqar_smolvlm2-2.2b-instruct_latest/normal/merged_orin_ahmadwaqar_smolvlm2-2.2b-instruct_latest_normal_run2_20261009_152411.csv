@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:24:13.296190,12024,380,4569,4567,6968.625,1,0.605,"In the video feed, there is a person sitting on a chair, a table with items on it, a wall, a door, and a ceiling with fluorescent lights."
+2026-10-09 15:24:28.296470,11728,2360,27678,27362,6968.625,31,0.499,"A person is sitting at a table in a room with white walls and a door, and the room has a ceiling with recessed lighting."
+2026-10-09 15:24:43.296735,11736,2520,29574,29637,6968.625,47,0.921,The video feed shows a white ceiling with recessed lighting and a brown door on the right side of the room.
+2026-10-09 15:24:58.297016,11760,2560,30105,29740,6968.625,62,0.89,"The video feed shows a man sitting at a table in an office, with a door next to him."

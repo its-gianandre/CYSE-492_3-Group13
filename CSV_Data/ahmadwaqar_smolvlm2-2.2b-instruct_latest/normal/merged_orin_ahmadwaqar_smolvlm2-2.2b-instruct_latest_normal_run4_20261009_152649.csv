@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:26:51.360527,12024,380,4569,4567,4410.453125,1,0.462,"The video shows a person sitting at a table in a room with a door, lights, and a chair in the background."
+2026-10-09 15:27:06.360876,11712,2480,29045,27773,4410.453125,27,0.607,"A person is sitting at a table in a small, empty conference room. The room has a door and a wall-mounted TV, and the ceiling lights are turned on."
+2026-10-09 15:27:21.361124,11728,2380,27912,27657,4410.453125,60,0.852,"In the video feed, a person is sitting at a table with a wooden surface, where a bottle with a blue cap is placed, while a television mounted on the w"
+2026-10-09 15:27:36.361387,11728,2360,27678,27430,4410.453125,88,0.632,A group of people is sitting around a table in a room with white walls and a door in the background. The room has several chairs and the people are si

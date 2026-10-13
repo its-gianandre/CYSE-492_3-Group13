@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:47:38.174017,12024,380,4569,4569,4410.453125,1,1.21,A person is sitting at a brown table in a room with a white door in the background.
+2026-10-09 15:47:53.174323,11864,1520,18033,18107,4758.3671875,11,1.071,"The video feed captures a room with a wooden table and a door, indicating it may be a meeting or conference room."
+2026-10-09 15:48:08.174568,11864,1520,18033,18077,4758.3671875,22,0.588,A person is sitting at a table with chairs around them.
+2026-10-09 15:48:23.174828,11864,1520,18033,18076,4758.3671875,35,0.985,"The image displays a room with a table and chairs, a door, and some lights on the ceiling."

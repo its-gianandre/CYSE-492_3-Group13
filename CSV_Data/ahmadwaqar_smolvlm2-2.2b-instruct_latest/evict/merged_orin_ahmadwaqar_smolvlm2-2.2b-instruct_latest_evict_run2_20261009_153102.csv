@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:31:04.308264,12024,380,4569,4569,144.5390625,,,
+2026-10-09 15:31:19.308539,12024,380,4569,4569,2327.3984375,1.0,24.776,"The video feed shows a room with a table and chairs, a door, and a television on the wall."
+2026-10-09 15:31:34.308799,12024,380,4569,6508,2327.3984375,1.0,24.776,"The video feed shows a room with a table and chairs, a door, and a television on the wall."
+2026-10-09 15:31:49.309049,12024,380,4569,4569,2327.3984375,2.0,28.408,"The video feed shows a room with a table, chairs, a door, and a television on the wall."

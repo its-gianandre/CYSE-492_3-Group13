@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:40:03.308173,12024,380,4569,4569,4410.453125,1,0.977,A video showing a conference room with a table and a door with a whiteboard on it.
+2026-10-09 15:40:18.308450,11880,1560,18532,18620,4506.3671875,10,1.268,A person is sitting at a table in a conference room with a door next to them and a television on the wall.
+2026-10-09 15:40:33.308711,11880,1540,18295,18438,4506.3671875,22,1.571,"A man is sitting at a table in a room with a door and a television in the background, with a ceiling full of lights above the table."
+2026-10-09 15:40:48.308963,11880,1560,18532,18648,4506.3671875,33,2.672,"A boy sits at a desk in a white room with a door and a TV mounted on the wall, with white walls and a gray floor."

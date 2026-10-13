@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:38:42.909457,12024,380,4569,15808,4410.453125,1,1.091,"A person is sitting at a table in a room with a door, while a chair is nearby."
+2026-10-09 15:38:57.909759,11880,1560,18532,18472,4506.3671875,10,1.268,"A person is sitting at a wooden table in a conference room, which has a door and a wall-mounted television."
+2026-10-09 15:39:12.910010,11880,1580,18770,19563,4506.3671875,19,1.984,A young Asian man is sitting at a table in an office and talking.
+2026-10-09 15:39:27.910267,11880,1580,18770,18854,4506.3671875,24,2.508,"A young Asian man is sitting at a table in a conference room, looking intently at a document or screen in front of him."

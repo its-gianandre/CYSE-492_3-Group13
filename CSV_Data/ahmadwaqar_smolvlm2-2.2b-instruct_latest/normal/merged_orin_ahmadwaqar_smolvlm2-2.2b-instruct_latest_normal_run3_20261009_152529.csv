@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:25:31.871711,12024,380,4569,4567,4410.453125,1,0.402,"The image features a room with a table and chairs, a door, and a television on the wall."
+2026-10-09 15:25:46.872007,11752,2220,26089,26181,4410.453125,32,0.403,A man is sitting at a table in a conference room with a door and a TV screen in the background.
+2026-10-09 15:26:01.872302,11744,2240,26306,25942,4410.453125,67,0.532,"A group of people are standing in a room with a wooden table and chairs, and there is a wooden door and a TV mounted on the wall."
+2026-10-09 15:26:16.872590,11736,2500,29340,28760,4410.453125,88,0.96,A young person with short hair is sitting at a table in an office with a wooden door and a ceiling with fluorescent lights.

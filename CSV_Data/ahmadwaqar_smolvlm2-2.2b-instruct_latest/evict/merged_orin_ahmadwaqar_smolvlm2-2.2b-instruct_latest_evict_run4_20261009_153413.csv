@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:34:15.664196,12024,380,4569,4569,144.5390625,,,
+2026-10-09 15:34:30.664472,12024,380,4569,4569,2327.3984375,1.0,24.694,A young man is sitting at a desk with a computer monitor in a small room.
+2026-10-09 15:34:45.664726,12024,380,4569,6345,2327.3984375,1.0,24.694,A young man is sitting at a desk with a computer monitor in a small room.
+2026-10-09 15:35:00.664987,12024,380,4569,4569,2327.3984375,2.0,25.595,"The video shows a room with a table, chairs, a door, and some objects on the table, and is taken from an angle, showing the side of the table."

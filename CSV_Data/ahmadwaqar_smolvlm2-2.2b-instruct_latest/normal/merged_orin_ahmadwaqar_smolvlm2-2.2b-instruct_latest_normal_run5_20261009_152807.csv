@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:28:09.920244,12024,380,4569,4567,4410.453125,1,0.684,"In the video, we see an empty office space with a wooden door and a whiteboard on the wall, and a person sitting at the table with their head down, po"
+2026-10-09 15:28:24.920525,11752,2200,25854,26310,4410.453125,33,0.45,"The video feeds a room with a wooden table, chairs, a door, a television, and a light on the ceiling."
+2026-10-09 15:28:39.920787,11728,2380,27912,26816,4410.453125,63,0.633,"A young Asian man with a neutral expression is sitting at a brown wooden conference table in a plain white conference room with white walls, a whitebo"
+2026-10-09 15:28:54.921038,11760,2140,25166,25666,4410.453125,98,0.403,"A person is seated at a table in a room with a door, wall, and ceiling with fluorescent lighting."

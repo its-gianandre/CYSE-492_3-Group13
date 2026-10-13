@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:35:49.808076,12024,380,4569,4569,144.5390625,,,
+2026-10-09 15:36:04.808351,12024,380,4569,4569,2327.3984375,1.0,24.654,A woman is sitting at a table in an empty conference room.
+2026-10-09 15:36:19.808612,12024,380,4569,6286,2327.3984375,1.0,24.654,A woman is sitting at a table in an empty conference room.
+2026-10-09 15:36:34.808878,12024,380,4569,4569,2327.3984375,2.0,25.596,"The video feed shows a room with tables, chairs, and a door in the background, and a person sitting in a chair with a blue water bottle in front of th"

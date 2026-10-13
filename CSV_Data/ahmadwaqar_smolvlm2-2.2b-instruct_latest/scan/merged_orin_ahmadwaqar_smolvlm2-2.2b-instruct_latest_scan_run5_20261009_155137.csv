@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:51:38.685803,12024,380,4569,17199,4410.453125,1,0.693,A person is sitting at a table with a door in the background.
+2026-10-09 15:51:53.686086,11864,1500,17796,17889,4758.3671875,12,1.296,"The video feed shows an empty office room with a table and chairs, a wooden door, and a flat-screen TV mounted on the wall."
+2026-10-09 15:52:08.686332,11864,1520,18033,17979,4758.3671875,25,0.981,"In the video feed, there is a wooden table with black chairs, and two men sitting in the room."
+2026-10-09 15:52:23.686597,11872,1520,18045,17980,4758.3671875,37,1.269,"A boy sitting at a wooden table in a room with a white wall, a chair, a door, and a TV on the wall."

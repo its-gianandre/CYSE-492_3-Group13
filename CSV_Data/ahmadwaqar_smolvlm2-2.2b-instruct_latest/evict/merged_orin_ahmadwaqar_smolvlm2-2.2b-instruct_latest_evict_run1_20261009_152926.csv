@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 15:29:28.532979,12024,380,4569,4567,4410.453125,1,0.391,"A young man with short black hair sits at a table in an office, looking at his phone."
+2026-10-09 15:29:43.533262,12024,380,4569,4570,2327.3984375,2,25.759,"The video feed shows a wooden door, a table with some items on it, and a white wall in a room with ceiling lights."
+2026-10-09 15:29:58.533520,12000,460,5520,9379,234.453125,2,25.759,"The video feed shows a wooden door, a table with some items on it, and a white wall in a room with ceiling lights."
+2026-10-09 15:30:13.533759,12024,380,4569,4569,2327.3984375,3,25.646,"The video feed displays a person sitting at a wooden table with various objects, a closed door with a light switch, and a light switch on the wall, wi"
