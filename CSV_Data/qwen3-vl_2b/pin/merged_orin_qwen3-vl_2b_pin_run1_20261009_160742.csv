@@ -1,0 +1,5 @@
+Time,VDD_GPU_SOC-IN_VOLTAGE_mW,VDD_GPU_SOC-IN_CURRENT_mA,VDD_GPU_SOC-IN_POWER_mW,VDD_GPU_SOC-AVG_POWER_mW,GPU_SHARED_MEMORY_MB,frame,latency_s,response_preview
+2026-10-09 16:07:44.634903,12032,380,4572,4570,144.5390625,,,
+2026-10-09 16:07:59.635184,11952,1200,14342,14221,1879.74609375,,,
+2026-10-09 16:08:14.635434,11880,1620,19245,19243,6927.75,1.0,38.748,"A conference room interior features a wooden table with chairs, a door, and ceiling lights, with a person partially visible in the lower left corner."
+2026-10-09 16:08:29.635711,11880,1720,20433,20584,6927.75,1.0,38.748,"A conference room interior features a wooden table with chairs, a door, and ceiling lights, with a person partially visible in the lower left corner."
