@@ -30,9 +30,9 @@ class Listener(Node):
         super().__init__('listener')
         #Below is modification
         self.attack_param = None
-        if attack is 'pin':
+        if attack == 'pin':
             self.attack_param = 'pin 90 1300'
-        elif attack is 'scan':
+        elif attack == 'scan':
             self.attack_param = 'scan 90 256'
         else:
             print('ERROR: attack parameter can only be \'pin\' or \'scan\'\n')
