@@ -32,8 +32,11 @@ class Listener(Node):
         self.attack_param = None
         if attack is 'pin':
             self.attack_param = 'pin 90 1300'
-        else:
+        elif attack is 'scan':
             self.attack_param = 'scan 90 256'
+        else:
+            print('ERROR: attack parameter can only be \'pin\' or \'scan\'\n')
+            quit()
         #end of modification
 
         self.sub = self.create_subscription(String, 'chatter', self.chatter_callback(attack_param=self.attack_param), 10) #modified
