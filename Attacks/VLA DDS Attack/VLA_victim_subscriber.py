@@ -41,7 +41,7 @@ class Listener(Node):
 
         self.sub = self.create_subscription(String, 'chatter', self.chatter_callback, 10) #modified
 
-    def chatter_callback(self, msg, attack_param):
+    def chatter_callback(self, msg):
         #Message To Confirm Attack Packet was recieved below:
         self.get_logger().info('I heard: [%s], Executing Attack' % msg.data) #modified
 
