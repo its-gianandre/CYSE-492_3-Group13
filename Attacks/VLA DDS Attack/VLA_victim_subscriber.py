@@ -46,7 +46,7 @@ class Listener(Node):
         self.get_logger().info('I heard: [%s], Executing Attack' % msg.data) #modified
 
         #Attack execution bellow:
-        attack_cmd = 'cd ~/Documents/week7/bella && ./gpu_cache_thrash' + self.attack_param
+        attack_cmd = 'cd ~/Documents/week7/bella && ./gpu_cache_thrash ' + self.attack_param
         subprocess.Popen(attack_cmd, shell=True)
 
         #Message To Confirm Attack executed below:
