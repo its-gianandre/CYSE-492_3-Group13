@@ -39,14 +39,14 @@ class Listener(Node):
             quit()
         #end of modification
 
-        self.sub = self.create_subscription(String, 'chatter', self.chatter_callback(attack_param=self.attack_param), 10) #modified
+        self.sub = self.create_subscription(String, 'chatter', self.chatter_callback, 10) #modified
 
     def chatter_callback(self, msg, attack_param):
         #Message To Confirm Attack Packet was recieved below:
         self.get_logger().info('I heard: [%s], Executing Attack' % msg.data) #modified
 
         #Attack execution bellow:
-        attack_cmd = 'cd ~/Documents/week7/bella && ./gpu_cache_thrash' + attack_param
+        attack_cmd = 'cd ~/Documents/week7/bella && ./gpu_cache_thrash' + self.attack_param
         subprocess.Popen(attack_cmd, shell=True)
 
         #Message To Confirm Attack executed below:
