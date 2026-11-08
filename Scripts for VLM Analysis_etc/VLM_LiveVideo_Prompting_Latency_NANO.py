@@ -78,7 +78,7 @@ try:
 				messages =[ 
 					{
 						'role' : 'user',
-						'content' : 'Describe what is happening in the video feed in one 			sentence.',
+						'content' : 'Describe what is happening in the video feed in one sentence.',
 				"images": [image_bytes],
 				},
 					],
