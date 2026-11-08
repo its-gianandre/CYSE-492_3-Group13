@@ -33,10 +33,13 @@ class Listener(Node):
 
     def chatter_callback(self, msg):
         #Message To Confirm Attack Packet was recieved below:
-        self.get_logger().info('I heard: [%s], Executing Attack' % msg.data) #modified
+        self.get_logger().info('I heard: \'[%s]\', Executing Attack' % msg.data) #modified
 
         #Analyzing Message Packet
         msg_list = (msg.data).split()
+
+        #debugging
+        #print(msg_list)
 
         if(msg_list[2] == 'pin'):
             attack_param = msg_list[2]
@@ -56,16 +59,8 @@ class Listener(Node):
             subprocess.Popen(attack_cmd, shell=True)
 
         #Message To Confirm Attack executed below:
-        self.get_logger().info(f'Executed the {attack_param} attack {iteration_param} times for {duration_param}s, killing node...\n')
+        self.get_logger().info(f'Executed the Attack: \'{attack_param}\' Times: \'{iteration_param}\' with Duration: [{duration_param}s] per attack, killing node...\n')
         quit() #stopping program altogether
-
-        #below was previous thought process, will delete if not needed
-        #if msg.data.startswith('Attack Packet:') and not self.attack_started:
-            #try:
-                # Complete this
-            #except OSError as error:
-                #self.get_logger().error(str(error))
-
 
 def main(args=None):
     rclpy.init(args=args)

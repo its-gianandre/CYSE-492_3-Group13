@@ -32,8 +32,14 @@ class Talker(Node):
         timer_period = 1.0
         self.tmr = self.create_timer(timer_period, self.timer_callback)
 
+        #debugging
+        #print(f'Termianal Parameters Entered: {attack} {duration} {iterations}')
+        #print(f'Attack: {attack}')
+        #print(f'Duration: {duration}')
+        #print(f'Duration: {iterations}')
+
         #below is our modifications
-        if(attack != 'pin' or attack != 'scan'):
+        if((attack != 'pin') and (attack != 'scan')):
             print('\nSYNTAX: ros2 run vla_attack_pkg attack_publisher attack_name duration_time number_of_iterations')
             print("ERROR: attack parameter can only be \'pin\' or \'scan\'")
             quit()
@@ -41,12 +47,11 @@ class Talker(Node):
             print('\nSYNTAX: ros2 run vla_attack_pkg attack_publisher attack_name duration_time number_of_iterations')
             print('ERROR" duration parameter cannot be empty or <= \'0\'')
             quit()
-        elif((len(iterations.strip() == 0)) or (int(iterations.strip()) <= 0)):
+        elif((len(iterations.strip()) == 0) or (int(iterations.strip()) <= 0)):
             print('\nSYNTAX: ros2 run vla_attack_pkg attack_publisher attack_name duration_time number_of_iterations')
             print('ERROR" iterations parameter cannot be empty or <= \'0\'')
             quit()
-
-
+        
         self.attack = attack
         self.duration = int(duration)
         self.iterations = int(iterations)
@@ -54,9 +59,9 @@ class Talker(Node):
 
     def timer_callback(self):
         msg = String()
-        msg.data = f'Attack_Packet - {self.attack} {self.duration} {self.iterations}: {0}'.format(self.i) #modified
-        self.i += 1
-        self.get_logger().info(f'Sending Attack Packet to Execute the {self.attack} Attack with Duration: {self.duration} and Iterations: {self.iterations} Locally on AGX Turtlebot3: "{0}"'.format(msg.data)) #modified
+        msg.data = f'Attack_Packet - {self.attack} {self.duration} {self.iterations} : {self.i}' #modified
+        self.get_logger().info(f'Sending Attack Packet to Execute the Attack: \'{self.attack}\' with Duration: \'{self.duration}\' and Iterations: \'{self.iterations}\' Locally on AGX Turtlebot3: {self.i}'.format(msg.data)) #modified
+        self.i += 1 #modified position
         self.pub.publish(msg)
 
 
