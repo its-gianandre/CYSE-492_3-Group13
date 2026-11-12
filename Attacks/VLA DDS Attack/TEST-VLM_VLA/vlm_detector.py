@@ -57,17 +57,6 @@ class VLMDetector(Node):
                     'content': prompt,
                     'images': [buffer.tobytes()]
                 }],
-                format={
-                    "type": "object",
-                    "properties": {
-                        "answer": {
-                            "type": "string",
-                            "enum": ["YES", "NO"]
-                        }
-                    },
-                    "required": ["answer"],
-                    "additionalProperties": False
-                },
                 options={
                     'temperature': 0,
                     'num_predict': 64
@@ -88,8 +77,12 @@ class VLMDetector(Node):
                 #if we are going to change the checking to analyze the entire contents of answer we want to check for:
                 #if ('stop' in answer) or ('STOP' in answer) or ('sign' in answer):
 
-                if answer not in ("YES", "NO"):
-                    answer = "INVALID"
+                if( ('STOP' in answer) or ('SIGN' in answer)):
+                    answer = "YES"
+                elif( ('STOP' not in answer) and ('SIGN' not in answer)):
+                    answer = "NO"
+                else:
+                    answer = 'UNKNOWN'
 
             except (
                 json.JSONDecodeError,
