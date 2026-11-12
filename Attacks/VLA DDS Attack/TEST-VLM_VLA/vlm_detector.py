@@ -69,13 +69,18 @@ class VLMDetector(Node):
                 f'Ollama raw response: {raw_answer}'
             )
 
-            # Interpret the VLM's natural-language description
-            description = raw_answer.strip().lower()
+            # Store each word from VLM response in a list
+            words = []
 
-            # Stop if the description mentions "stop" or "sign".
-            # This also matches "stop sign".
-            if "stop" in description or "sign" in description:
+            for word in raw_answer.lower().replace("-", " ").split():
+                words.append(word.strip(".,!?;:'\"()[]{}"))
+
+            self.get_logger().info(f'Words: {words}')
+
+            # Check for stop sign keywords
+            if "stop" in words or "sign" in words or "signs" in words:
                 answer = "YES"
+
             else:
                 answer = "NO"
 
@@ -92,6 +97,7 @@ class VLMDetector(Node):
             else:
                 self.publish_status("UNKNOWN")
                 break
+
 
 
     # Test 2: Incoming robot detection
