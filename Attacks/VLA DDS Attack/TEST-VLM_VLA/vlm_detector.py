@@ -28,7 +28,7 @@ class VLMDetector(Node):
         self.get_logger().info(f'Detection status: {status}')
 
     # Test 1: Stop sign detection
-    def run(self, model_name):
+    def stop_sign(self, model_name):
         prompt = (
             "Explain what you see in one sentence"
         )
@@ -69,28 +69,34 @@ class VLMDetector(Node):
                 f'Ollama raw response: {raw_answer}'
             )
 
-            # Extract answer from JSON
-            try:
-                result = json.loads(raw_answer)
-                answer = result["answer"].strip().upper()
+            # Interpret the VLM's natural-language description
+            description = raw_answer.strip().lower()
 
-                #if we are going to change the checking to analyze the entire contents of answer we want to check for:
-                #if ('stop' in answer) or ('STOP' in answer) or ('sign' in answer):
+            # Uncertain responses
+            uncertain = (
+                "maybe", "possibly", "might be", "could be",
+                "unsure", "unclear", "not sure",
+                "cannot tell", "can't tell", "too blurry"
+            )
 
-                if( ('STOP' in answer) or ('SIGN' in answer)):
-                    answer = "YES"
-                elif( ('STOP' not in answer) and ('SIGN' not in answer)):
-                    answer = "NO"
-                else:
-                    answer = 'UNKNOWN'
+            # Negative responses
+            negatives = (
+                "no stop sign", "no stop signs",
+                "no visible stop sign", "no traffic signs",
+                "no signs", "don't see a stop sign",
+                "do not see a stop sign", "cannot see a stop sign",
+                "can't see a stop sign", "stop sign is not visible",
+                "without a stop sign", "not a stop sign"
+            )
 
-            except (
-                json.JSONDecodeError,
-                KeyError,
-                AttributeError,
-                TypeError
-            ):
-                answer = "INVALID"
+            if any(phrase in description for phrase in uncertain):
+                answer = "UNKNOWN"
+            elif any(phrase in description for phrase in negatives):
+                answer = "NO"
+            elif "stop sign" in description or "stop-sign" in description:
+                answer = "YES"
+            else:
+                answer = "UNKNOWN"
 
             self.get_logger().info(f'Ollama answer: {answer}')
 
@@ -105,6 +111,7 @@ class VLMDetector(Node):
             else:
                 self.publish_status("UNKNOWN")
                 break
+
 
     # Test 2: Incoming robot detection
     def incoming(self, model_name):
@@ -360,7 +367,7 @@ def main():
 
     try:
         if test_type == "stopsign":
-            node.run(model_name)
+            node.stop_sign(model_name)
 
         elif test_type == "incoming_test":
             node.incoming(model_name)
