@@ -1,8 +1,8 @@
-# Only configured for stop sign detection 
 import sys
 import time
 import cv2
 import rclpy
+import json
 
 from ollama import chat
 from webcam import Webcam
@@ -27,14 +27,16 @@ class VLMDetector(Node):
 
     def run(self, model_name):
         prompt = (
-            "Is a stop sign clearly visible in this image? "
-            "Answer only YES or NO."
+            "Look at this image. Is there a stop sign visible? "
+            "Respond only with a JSON object containing the key "
+            "'answer' and a value of either 'YES' or 'NO'. "
+            "Do not provide explanations."
         )
 
         self.camera = Webcam(
-            src=0, w=640, h=360, as_bgr=True
+            src=0, w=1080, h=1920, as_bgr=True
         )
-
+        time.sleep(1) # Added delay to avoid detecting stop sign immediately
         while rclpy.ok():
             grabbed, frame = self.camera.read()
 
@@ -53,69 +55,47 @@ class VLMDetector(Node):
                     'content': prompt,
                     'images': [buffer.tobytes()]
                 }],
-                options={'temperature': 0}
+                format={
+                    "type": "object",
+                    "properties": {
+                        "answer": {
+                            "type": "string",
+                            "enum": ["YES", "NO"]
+                        }
+                    },
+                    "required": ["answer"],
+                    "additionalProperties": False
+                },
+                options={'temperature': 0, "num_predict": 64}
             )
 
-            answer = response.message.content.strip().upper()
-            self.get_logger().info(f'Ollama answer: {answer}')
+            # Get the raw response from Ollama
+            raw_answer = response.message.content
+            self.get_logger().info(f'Ollama raw response: {raw_answer}')
 
+            # Extract the answer from the JSON response
+            try:
+                result = json.loads(raw_answer)
+                answer = result["answer"].strip().upper()
+
+                if answer not in ("YES", "NO"):
+                    answer = "INVALID"
+
+            except (json.JSONDecodeError, KeyError, AttributeError, TypeError):
+                answer = "INVALID"
+
+            self.get_logger().info(f'Ollama answer: {answer}')    
+            # Publish the appropriate status
             if answer == "YES":
                 self.publish_status("STOP")
                 break
-
+            
             elif answer == "NO":
                 self.publish_status("CLEAR")
-
+            
             else:
                 self.publish_status("UNKNOWN")
-                break
-
-    def incoming(self, model_name):
-        prompt = (
-                    "Is a robot clearly visible in this image? "
-                    "Answer only YES or NO."
-                )
-        
-        self.camera = Webcam(
-            src=0, w=640, h=360, as_bgr=True
-                )
-        
-        while rclpy.ok():
-            grabbed, frame = self.camera.read()
-        
-            if not grabbed:
-                raise RuntimeError("Camera did not return a frame")
-        
-            success, buffer = cv2.imencode(".jpg", frame)
-        
-            if not success:
-                raise RuntimeError("Could not encode frame")
-        
-            response = chat(
-                model=model_name,
-                messages=[{
-                    'role': 'user',
-                    'content': prompt,
-                    'images': [buffer.tobytes()]
-                }],
-                options={'temperature': 0}
-            )
-        
-            answer = response.message.content.strip().upper()
-            self.get_logger().info(f'Ollama answer: {answer}')
-        
-            if answer == "YES":
-                self.publish_status("STOP")
-                break
-        
-            elif answer == "NO":
-                self.publish_status("CLEAR")
-        
-            else:
-                self.publish_status("UNKNOWN")
-                break
-
-
+                break    
 
 def main():
     if len(sys.argv) != 3 or sys.argv[2] != "stopsign":
