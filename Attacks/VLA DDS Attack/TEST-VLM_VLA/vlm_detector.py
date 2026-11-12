@@ -70,6 +70,52 @@ class VLMDetector(Node):
                 self.publish_status("UNKNOWN")
                 break
 
+    def incoming(self, model_name):
+        prompt = (
+                    "Is a robot clearly visible in this image? "
+                    "Answer only YES or NO."
+                )
+        
+        self.camera = Webcam(
+            src=0, w=640, h=360, as_bgr=True
+                )
+        
+        while rclpy.ok():
+            grabbed, frame = self.camera.read()
+        
+            if not grabbed:
+                raise RuntimeError("Camera did not return a frame")
+        
+            success, buffer = cv2.imencode(".jpg", frame)
+        
+            if not success:
+                raise RuntimeError("Could not encode frame")
+        
+            response = chat(
+                model=model_name,
+                messages=[{
+                    'role': 'user',
+                    'content': prompt,
+                    'images': [buffer.tobytes()]
+                }],
+                options={'temperature': 0}
+            )
+        
+            answer = response.message.content.strip().upper()
+            self.get_logger().info(f'Ollama answer: {answer}')
+        
+            if answer == "YES":
+                self.publish_status("STOP")
+                break
+        
+            elif answer == "NO":
+                self.publish_status("CLEAR")
+        
+            else:
+                self.publish_status("UNKNOWN")
+                break
+
+
 
 def main():
     if len(sys.argv) != 3 or sys.argv[2] != "stopsign":
