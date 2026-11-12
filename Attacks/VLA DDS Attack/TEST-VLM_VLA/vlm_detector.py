@@ -95,6 +95,76 @@ class VLMDetector(Node):
             
             else:
                 self.publish_status("UNKNOWN")
+                break
+
+    def incoming(self, model_name):
+        prompt = (
+                    "Is a robot clearly visible in this image? "
+                    "Answer only YES or NO."
+                )
+        
+        self.camera = Webcam(
+            src=0, w=640, h=360, as_bgr=True
+                )
+
+        time.sleep(1) # Added delay to avoid detecting robot immediately
+        
+        while rclpy.ok():
+            grabbed, frame = self.camera.read()
+        
+            if not grabbed:
+                raise RuntimeError("Camera did not return a frame")
+        
+            success, buffer = cv2.imencode(".jpg", frame)
+        
+            if not success:
+                raise RuntimeError("Could not encode frame")
+        
+            response = chat(
+                model=model_name,
+                messages=[{
+                    'role': 'user',
+                    'content': prompt,
+                    'images': [buffer.tobytes()]
+                }],
+                format={
+                    "type": "object",
+                    "properties": {
+                        "answer": {
+                            "type": "string",
+                            "enum": ["YES", "NO"]
+                        }
+                    },
+                    "required": ["answer"],
+                    "additionalProperties": False
+                },
+                options={'temperature': 0, "num_predict": 64}
+            )
+        
+            answer = response.message.content.strip().upper()
+            self.get_logger().info(f'Ollama answer: {answer}')
+
+            try:
+                result = json.loads(raw_answer)
+                answer = result["answer"].strip().upper()
+
+                if answer not in ("YES", "NO"):
+                    answer = "INVALID"
+
+            except (json.JSONDecodeError, KeyError, AttributeError, TypeError):
+                answer = "INVALID"
+
+            self.get_logger().info(f'Ollama answer: {answer}')  
+
+            if answer == "YES":
+                self.publish_status("STOP")
+                break
+        
+            elif answer == "NO":
+                self.publish_status("CLEAR")
+        
+            else:
+                self.publish_status("UNKNOWN")
                 break    
 
 def main():
