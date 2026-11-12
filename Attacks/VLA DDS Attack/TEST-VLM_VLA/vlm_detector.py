@@ -85,6 +85,9 @@ class VLMDetector(Node):
                 result = json.loads(raw_answer)
                 answer = result["answer"].strip().upper()
 
+                #if we are going to change the checking to analyze the entire contents of answer we want to check for:
+                #if ('stop' in answer) or ('STOP' in answer) or ('sign' in answer):
+
                 if answer not in ("YES", "NO"):
                     answer = "INVALID"
 
