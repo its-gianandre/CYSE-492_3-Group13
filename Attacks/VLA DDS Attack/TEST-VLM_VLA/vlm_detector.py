@@ -116,11 +116,7 @@ class VLMDetector(Node):
     # Test 2: Incoming robot detection
     def incoming(self, model_name):
         prompt = (
-            "Look at this image. Is another mobile robot clearly "
-            "visible directly ahead in the path? "
-            "Respond with YES if a robot is visible, otherwise NO. "
-            "Return your answer in JSON using the key 'answer'. "
-            "Do not provide explanations."
+            'Explain what you see in one sentence'
         )
 
         self.camera = Webcam(
@@ -147,17 +143,6 @@ class VLMDetector(Node):
                     'content': prompt,
                     'images': [buffer.tobytes()]
                 }],
-                format={
-                    "type": "object",
-                    "properties": {
-                        "answer": {
-                            "type": "string",
-                            "enum": ["YES", "NO"]
-                        }
-                    },
-                    "required": ["answer"],
-                    "additionalProperties": False
-                },
                 options={
                     'temperature': 0,
                     'num_predict': 64
@@ -263,10 +248,7 @@ class VLMDetector(Node):
 
     def crossing(self, model_name):
         prompt = (
-            "Look at this image. Is there a robot visible? "
-            "Respond only with a JSON object containing the key "
-            "'answer' and a value of either 'YES' or 'NO'. "
-            "Do not provide explanations."
+            'Explain what you see in one sentence'
         )
 
         self.camera = Webcam(
@@ -293,17 +275,6 @@ class VLMDetector(Node):
                     'content': prompt,
                     'images': [buffer.tobytes()]
                 }],
-                format={
-                    "type": "object",
-                    "properties": {
-                        "answer": {
-                            "type": "string",
-                            "enum": ["YES", "NO"]
-                        }
-                    },
-                    "required": ["answer"],
-                    "additionalProperties": False
-                },
                 options={
                     'temperature': 0,
                     'num_predict': 64
@@ -317,26 +288,88 @@ class VLMDetector(Node):
             )
 
             # Extract answer from JSON
+            # Try extracting answer from JSON
             try:
                 result = json.loads(raw_answer)
-                answer = result["answer"].strip().upper()
 
-                if answer not in ("YES", "NO"):
-                    answer = "INVALID"
+                if isinstance(result, dict):
+                    value = result.get("answer", "")
 
-            except (
-                json.JSONDecodeError,
-                KeyError,
-                AttributeError,
-                TypeError
-            ):
+                    if isinstance(value, str):
+                        answer = value.strip().lower()
+                    else:
+                        answer = ""
+                else:
+                    answer = raw_answer.strip().lower()
+
+            except (json.JSONDecodeError, TypeError):
+                answer = raw_answer.strip().lower()
+
+            # Remove extra punctuation
+            answer = answer.strip(" \n\t.!?,\"'")
+
+            # Word bank for detecting robots
+            keywords = (
+                "robot",
+                "robotic",
+                "turtlebot"
+            )
+
+            # Negative responses
+            negatives = (
+                "no robot",
+                "no robotic",
+                "no turtlebot",
+                "no visible robot",
+                "don't see a robot",
+                "do not see a robot",
+                "can't see a robot",
+                "cannot see a robot",
+                "robot is not visible",
+                "robot isn't visible",
+                "not a robot"
+            )
+
+            # Uncertain responses
+            uncertain = (
+                "maybe",
+                "unsure",
+                "uncertain",
+                "unclear",
+                "not sure",
+                "cannot tell",
+                "can't tell"
+            )
+
+            # Interpret response
+            if answer in ("yes", "no"):
+                answer = answer.upper()
+
+            elif any(word in answer for word in uncertain):
+                answer = "INVALID"
+
+            elif any(phrase in answer for phrase in negatives):
+                answer = "NO"
+
+            elif any(word in answer for word in
+                     ("not", "no ", "without",
+                      "cannot", "can't", "don't")):
+                answer = "INVALID"
+
+            elif answer.startswith(("yes ", "yes,")):
+                answer = "YES"
+
+            elif any(word in answer for word in keywords):
+                answer = "YES"
+
+            else:
                 answer = "INVALID"
 
             self.get_logger().info(f'Ollama answer: {answer}')
 
             # Publish status
             if answer == "YES":
-                self.publish_status("STOP")
+                self.publish_status("INCOMING")
                 break
 
             elif answer == "NO":
@@ -344,7 +377,7 @@ class VLMDetector(Node):
 
             else:
                 self.publish_status("UNKNOWN")
-                break        
+                break       
 
 
 
