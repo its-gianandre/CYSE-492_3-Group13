@@ -30,10 +30,7 @@ class VLMDetector(Node):
     # Test 1: Stop sign detection
     def run(self, model_name):
         prompt = (
-            "Look at this image. Is there a stop sign visible? "
-            "Respond only with a JSON object containing the key "
-            "'answer' and a value of either 'YES' or 'NO'. "
-            "Do not provide explanations."
+            "Explain what you see in one sentence"
         )
 
         self.camera = Webcam(
