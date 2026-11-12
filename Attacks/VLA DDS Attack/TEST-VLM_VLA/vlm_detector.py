@@ -238,11 +238,11 @@ class VLMDetector(Node):
 def main():
     # Validate terminal arguments
     if len(sys.argv) != 3 or sys.argv[2] not in (
-        "stopsign", "incoming_test"
+        "stopsign", "incoming_test", "crossing_test"
     ):
         print(
             "Usage: ros2 run vlm_turtlebot vlm_detector "
-            "<model> <stopsign|incoming_test>"
+            "<model> <stopsign|incoming_test|crossing_test>"
         )
         return
 
@@ -258,6 +258,9 @@ def main():
 
         elif test_type == "incoming_test":
             node.incoming(model_name)
+
+        elif test_type == "crossing_test":
+            node.crossing(model_name)
 
     except KeyboardInterrupt:
         node.get_logger().info("Detection interrupted")
