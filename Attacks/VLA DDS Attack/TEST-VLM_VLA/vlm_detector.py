@@ -71,7 +71,8 @@ class VLMDetector(Node):
             for word in raw_answer.lower().replace("-", " ").split():
                 words.append(word.strip(".,!?;:'\"()[]{}"))
 
-            self.get_logger().info(f'Words: {words}')
+            # Displays the actual list containing the words from VLM response
+            # self.get_logger().info(f'Words: {words}')
 
             # Check for stop sign keywords
             if "stop" in words or "sign" in words or "signs" in words:
@@ -99,7 +100,7 @@ class VLMDetector(Node):
     # Test 2: Incoming robot detection
     def incoming(self, model_name):
         prompt = (
-            'Explain what you see in one sentence'
+            "Explain what you see in one sentence"
         )
 
         self.camera = Webcam(
@@ -134,82 +135,21 @@ class VLMDetector(Node):
                 f'Ollama raw response: {raw_answer}'
             )
 
-            # Try extracting answer from JSON
-            try:
-                result = json.loads(raw_answer)
+            # Store each word from VLM response in a list
+            words = []
 
-                if isinstance(result, dict):
-                    value = result.get("answer", "")
+            for word in raw_answer.lower().replace("-", " ").split():
+                words.append(word.strip(".,!?;:'\"()[]{}"))
 
-                    if isinstance(value, str):
-                        answer = value.strip().lower()
-                    else:
-                        answer = ""
-                else:
-                    answer = raw_answer.strip().lower()
+            # Displays the actual list containing the words from VLM response
+            # self.get_logger().info(f'Words: {words}')
 
-            except (json.JSONDecodeError, TypeError):
-                answer = raw_answer.strip().lower()
-
-            # Remove extra punctuation
-            answer = answer.strip(" \n\t.!?,\"'")
-
-            # Word bank for detecting robots
-            keywords = (
-                "robot",
-                "robotic",
-                "turtlebot"
-            )
-
-            # Negative responses
-            negatives = (
-                "no robot",
-                "no robotic",
-                "no turtlebot",
-                "no visible robot",
-                "don't see a robot",
-                "do not see a robot",
-                "can't see a robot",
-                "cannot see a robot",
-                "robot is not visible",
-                "robot isn't visible",
-                "not a robot"
-            )
-
-            # Uncertain responses
-            uncertain = (
-                "maybe",
-                "unsure",
-                "uncertain",
-                "unclear",
-                "not sure",
-                "cannot tell",
-                "can't tell"
-            )
-
-            # Interpret response
-            if answer in ("yes", "no"):
-                answer = answer.upper()
-
-            elif any(word in answer for word in uncertain):
-                answer = "INVALID"
-
-            elif any(phrase in answer for phrase in negatives):
-                answer = "NO"
-
-            elif any(word in answer for word in
-                     ("not", "no ", "without",
-                      "cannot", "can't", "don't")):
-                answer = "INVALID"
-
-            elif answer.startswith(("yes ", "yes,")):
-                answer = "YES"
-
-            elif any(word in answer for word in keywords):
+            # Check for stop sign keywords
+            if "robot" in words or "robotic" in words or "robots" in words:
                 answer = "YES"
 
             else:
-                answer = "INVALID"
+                answer = "NO"
 
             self.get_logger().info(f'Ollama answer: {answer}')
 
@@ -224,10 +164,11 @@ class VLMDetector(Node):
             else:
                 self.publish_status("UNKNOWN")
                 break
+
 
     def crossing(self, model_name):
         prompt = (
-            'Explain what you see in one sentence'
+            "Explain what you see in one sentence"
         )
 
         self.camera = Webcam(
@@ -262,89 +203,27 @@ class VLMDetector(Node):
                 f'Ollama raw response: {raw_answer}'
             )
 
-            # Extract answer from JSON
-            # Try extracting answer from JSON
-            try:
-                result = json.loads(raw_answer)
+            # Store each word from VLM response in a list
+            words = []
 
-                if isinstance(result, dict):
-                    value = result.get("answer", "")
+            for word in raw_answer.lower().replace("-", " ").split():
+                words.append(word.strip(".,!?;:'\"()[]{}"))
 
-                    if isinstance(value, str):
-                        answer = value.strip().lower()
-                    else:
-                        answer = ""
-                else:
-                    answer = raw_answer.strip().lower()
+            # Displays the actual list containing the words from VLM response
+            # self.get_logger().info(f'Words: {words}')
 
-            except (json.JSONDecodeError, TypeError):
-                answer = raw_answer.strip().lower()
-
-            # Remove extra punctuation
-            answer = answer.strip(" \n\t.!?,\"'")
-
-            # Word bank for detecting robots
-            keywords = (
-                "robot",
-                "robotic",
-                "turtlebot"
-            )
-
-            # Negative responses
-            negatives = (
-                "no robot",
-                "no robotic",
-                "no turtlebot",
-                "no visible robot",
-                "don't see a robot",
-                "do not see a robot",
-                "can't see a robot",
-                "cannot see a robot",
-                "robot is not visible",
-                "robot isn't visible",
-                "not a robot"
-            )
-
-            # Uncertain responses
-            uncertain = (
-                "maybe",
-                "unsure",
-                "uncertain",
-                "unclear",
-                "not sure",
-                "cannot tell",
-                "can't tell"
-            )
-
-            # Interpret response
-            if answer in ("yes", "no"):
-                answer = answer.upper()
-
-            elif any(word in answer for word in uncertain):
-                answer = "INVALID"
-
-            elif any(phrase in answer for phrase in negatives):
-                answer = "NO"
-
-            elif any(word in answer for word in
-                     ("not", "no ", "without",
-                      "cannot", "can't", "don't")):
-                answer = "INVALID"
-
-            elif answer.startswith(("yes ", "yes,")):
-                answer = "YES"
-
-            elif any(word in answer for word in keywords):
+            # Check for stop sign keywords
+            if "robot" in words or "robotic" in words or "robots" in words:
                 answer = "YES"
 
             else:
-                answer = "INVALID"
+                answer = "NO"
 
             self.get_logger().info(f'Ollama answer: {answer}')
 
             # Publish status
             if answer == "YES":
-                self.publish_status("INCOMING")
+                self.publish_status("STOP")
                 break
 
             elif answer == "NO":
@@ -352,7 +231,7 @@ class VLMDetector(Node):
 
             else:
                 self.publish_status("UNKNOWN")
-                break       
+                break          
 
 
 
