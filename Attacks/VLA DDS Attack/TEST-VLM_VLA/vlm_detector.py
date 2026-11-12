@@ -56,11 +56,7 @@ class VLMDetector(Node):
                     'role': 'user',
                     'content': prompt,
                     'images': [buffer.tobytes()]
-                }],
-                options={
-                    'temperature': 0,
-                    'num_predict': 64
-                }
+                }]
             )
 
             # Get raw response
