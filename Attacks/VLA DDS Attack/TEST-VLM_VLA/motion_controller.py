@@ -8,21 +8,26 @@ from geometry_msgs.msg import TwistStamped
 
 
 FORWARD_SPEED = 0.05
+TURN_SPEED = 0.4
 DECISION_TIMEOUT = 3.0
 MAX_TEST_DURATION = 30.0
+TURN_DURATION = 2.0 # Approximately 45 degrees
+POST_TURN_FORWARD_DURATION = 4.0
 
 
 class MotionController(Node):
     def __init__(self):
         super().__init__('motion_controller')
 
+        # Publish movement commands
         self.publisher_ = self.create_publisher(
             TwistStamped, '/cmd_vel', 10
         )
 
+        # Subscribe to detection status
         self.subscription = self.create_subscription(
             String,
-            '/stop_sign_status',
+            '/detection_status',
             self.listener_callback,
             10
         )
@@ -33,47 +38,104 @@ class MotionController(Node):
 
         self.last_clear = None
         self.started = None
-        self.stop_latched = False
+        self.phase_started = None
+
+        # Possible states:
+        # WAITING, FORWARD, TURN_LEFT,
+        # AVOID_FORWARD, STOPPED
+        self.state = "WAITING"
 
     def listener_callback(self, msg):
-        if self.stop_latched:
+        status = msg.data.strip().upper()
+        now = time.monotonic()
+
+        if self.state == "STOPPED":
             return
 
-        if msg.data == "CLEAR":
-            now = time.monotonic()
-            self.last_clear = now
+        if status == "CLEAR":
+            # Only update normal forward movement
+            if self.state in ("WAITING", "FORWARD"):
+                self.last_clear = now
 
-            if self.started is None:
-                self.started = now
+                if self.started is None:
+                    self.started = now
+
+                self.state = "FORWARD"
+
+        elif status == "INCOMING":
+            # Begin avoidance maneuver
+            if self.state in ("WAITING", "FORWARD"):
+                self.get_logger().info(
+                    "Incoming robot detected. Turning left."
+                )
+
+                if self.started is None:
+                    self.started = now
+
+                self.phase_started = now
+                self.state = "TURN_LEFT"
+                self.send_velocity(0.0, 0.0)
+
         else:
-            self.get_logger().info(f'Stopping: {msg.data}')
-            self.stop_latched = True
+            # STOP, UNKNOWN, or unexpected status
+            self.get_logger().info(f'Stopping: {status}')
+            self.state = "STOPPED"
+            self.send_velocity(0.0, 0.0)
 
-    def send_velocity(self, linear=0.0):
+    def send_velocity(self, linear=0.0, angular=0.0):
         msg = TwistStamped()
 
         msg.header.stamp = self.get_clock().now().to_msg()
         msg.header.frame_id = "base_link"
 
         msg.twist.linear.x = float(linear)
+        msg.twist.angular.z = float(angular)
 
         self.publisher_.publish(msg)
 
     def timer_callback(self):
         now = time.monotonic()
 
-        if (self.last_clear is not None and
-                now - self.last_clear > DECISION_TIMEOUT):
-            self.stop_latched = True
-
+        # Maximum test duration
         if (self.started is not None and
                 now - self.started > MAX_TEST_DURATION):
-            self.stop_latched = True
+            self.state = "STOPPED"
 
-        if not self.stop_latched and self.last_clear is not None:
-            self.send_velocity(FORWARD_SPEED)
+        # Stop if no recent CLEAR during normal movement
+        if self.state == "FORWARD":
+            if (self.last_clear is None or
+                    now - self.last_clear > DECISION_TIMEOUT):
+                self.state = "STOPPED"
+
+        if self.state == "FORWARD":
+            self.send_velocity(FORWARD_SPEED, 0.0)
+
+        elif self.state == "TURN_LEFT":
+            if now - self.phase_started < TURN_DURATION:
+                self.send_velocity(0.0, TURN_SPEED)
+            else:
+                self.get_logger().info(
+                    "Turn complete. Moving forward."
+                )
+
+                self.phase_started = now
+                self.state = "AVOID_FORWARD"
+                self.send_velocity(FORWARD_SPEED, 0.0)
+
+        elif self.state == "AVOID_FORWARD":
+            if (now - self.phase_started <
+                    POST_TURN_FORWARD_DURATION):
+                self.send_velocity(FORWARD_SPEED, 0.0)
+            else:
+                self.get_logger().info(
+                    "Avoidance maneuver complete."
+                )
+
+                self.state = "STOPPED"
+                self.send_velocity(0.0, 0.0)
+
         else:
-            self.send_velocity(0.0)
+            self.send_velocity(0.0, 0.0)
 
 
 def main():
@@ -87,7 +149,7 @@ def main():
         pass
 
     finally:
-        node.send_velocity(0.0)
+        node.send_velocity(0.0, 0.0)
         time.sleep(0.2)
         node.destroy_node()
         rclpy.shutdown()
