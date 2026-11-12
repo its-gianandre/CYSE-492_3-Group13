@@ -72,31 +72,12 @@ class VLMDetector(Node):
             # Interpret the VLM's natural-language description
             description = raw_answer.strip().lower()
 
-            # Uncertain responses
-            uncertain = (
-                "maybe", "possibly", "might be", "could be",
-                "unsure", "unclear", "not sure",
-                "cannot tell", "can't tell", "too blurry"
-            )
-
-            # Negative responses
-            negatives = (
-                "no stop sign", "no stop signs",
-                "no visible stop sign", "no traffic signs",
-                "no signs", "don't see a stop sign",
-                "do not see a stop sign", "cannot see a stop sign",
-                "can't see a stop sign", "stop sign is not visible",
-                "without a stop sign", "not a stop sign"
-            )
-
-            if any(phrase in description for phrase in uncertain):
-                answer = "UNKNOWN"
-            elif any(phrase in description for phrase in negatives):
-                answer = "NO"
-            elif "stop sign" in description or "stop-sign" in description:
+            # Stop if the description mentions "stop" or "sign".
+            # This also matches "stop sign".
+            if "stop" in description or "sign" in description:
                 answer = "YES"
             else:
-                answer = "UNKNOWN"
+                answer = "NO"
 
             self.get_logger().info(f'Ollama answer: {answer}')
 
