@@ -7,11 +7,11 @@ from std_msgs.msg import String
 from geometry_msgs.msg import TwistStamped
 
 
-FORWARD_SPEED = 0.05
-TURN_SPEED = 0.4
-DECISION_TIMEOUT = 3.0
+FORWARD_SPEED = 0.1
+TURN_SPEED = 0.5
+DECISION_TIMEOUT = 4.0
 MAX_TEST_DURATION = 30.0
-TURN_DURATION = 2.0 # Approximately 45 degrees
+TURN_DURATION =  3.5
 POST_TURN_FORWARD_DURATION = 4.0
 
 
@@ -105,7 +105,7 @@ class MotionController(Node):
         if self.state == "FORWARD":
             if (self.last_clear is None or
                     now - self.last_clear > DECISION_TIMEOUT):
-                self.state = "STOPPED"
+                self.state = "WAITING"
 
         if self.state == "FORWARD":
             self.send_velocity(FORWARD_SPEED, 0.0)
