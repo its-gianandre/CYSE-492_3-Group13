@@ -261,6 +261,92 @@ class VLMDetector(Node):
                 self.publish_status("UNKNOWN")
                 break
 
+    def crossing(self, model_name):
+        prompt = (
+            "Look at this image. Is there a robot visible? "
+            "Respond only with a JSON object containing the key "
+            "'answer' and a value of either 'YES' or 'NO'. "
+            "Do not provide explanations."
+        )
+
+        self.camera = Webcam(
+            src=0, w=1080, h=1920, as_bgr=True
+        )
+
+        time.sleep(1)
+
+        while rclpy.ok():
+            grabbed, frame = self.camera.read()
+
+            if not grabbed:
+                raise RuntimeError("Camera did not return a frame")
+
+            success, buffer = cv2.imencode(".jpg", frame)
+
+            if not success:
+                raise RuntimeError("Could not encode frame")
+
+            response = chat(
+                model=model_name,
+                messages=[{
+                    'role': 'user',
+                    'content': prompt,
+                    'images': [buffer.tobytes()]
+                }],
+                format={
+                    "type": "object",
+                    "properties": {
+                        "answer": {
+                            "type": "string",
+                            "enum": ["YES", "NO"]
+                        }
+                    },
+                    "required": ["answer"],
+                    "additionalProperties": False
+                },
+                options={
+                    'temperature': 0,
+                    'num_predict': 64
+                }
+            )
+
+            # Get raw response
+            raw_answer = response.message.content
+            self.get_logger().info(
+                f'Ollama raw response: {raw_answer}'
+            )
+
+            # Extract answer from JSON
+            try:
+                result = json.loads(raw_answer)
+                answer = result["answer"].strip().upper()
+
+                if answer not in ("YES", "NO"):
+                    answer = "INVALID"
+
+            except (
+                json.JSONDecodeError,
+                KeyError,
+                AttributeError,
+                TypeError
+            ):
+                answer = "INVALID"
+
+            self.get_logger().info(f'Ollama answer: {answer}')
+
+            # Publish status
+            if answer == "YES":
+                self.publish_status("STOP")
+                break
+
+            elif answer == "NO":
+                self.publish_status("CLEAR")
+
+            else:
+                self.publish_status("UNKNOWN")
+                break        
+
+
 
 def main():
     # Validate terminal arguments
