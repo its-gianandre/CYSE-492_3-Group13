@@ -9,7 +9,7 @@ from geometry_msgs.msg import TwistStamped
 
 FORWARD_SPEED = 0.1
 TURN_SPEED = 0.5
-DECISION_TIMEOUT = 4.0
+# DECISION_TIMEOUT = 4.0
 MAX_TEST_DURATION = 30.0
 TURN_DURATION =  3.5
 POST_TURN_FORWARD_DURATION = 4.0
@@ -36,7 +36,7 @@ class MotionController(Node):
             0.1, self.timer_callback
         )
 
-        self.last_clear = None
+        # self.last_clear = None
         self.started = None
         self.phase_started = None
 
@@ -55,7 +55,7 @@ class MotionController(Node):
         if status == "CLEAR":
             # Only update normal forward movement
             if self.state in ("WAITING", "FORWARD"):
-                self.last_clear = now
+                # self.last_clear = now
 
                 if self.started is None:
                     self.started = now
@@ -102,10 +102,10 @@ class MotionController(Node):
             self.state = "STOPPED"
 
         # Stop if no recent CLEAR during normal movement
-        if self.state == "FORWARD":
-            if (self.last_clear is None or
-                    now - self.last_clear > DECISION_TIMEOUT):
-                self.state = "WAITING"
+        # if self.state == "FORWARD":
+        #     if (self.last_clear is None or
+        #             now - self.last_clear > DECISION_TIMEOUT):
+        #         self.state = "WAITING"
 
         if self.state == "FORWARD":
             self.send_velocity(FORWARD_SPEED, 0.0)
