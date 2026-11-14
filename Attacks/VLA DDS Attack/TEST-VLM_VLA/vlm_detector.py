@@ -158,6 +158,12 @@ class VLMDetector(Node):
                 self.publish_status("INCOMING")
                 break
 
+            if answer == "YES" and model_name == "aeline/opan:latest":
+                self.publish_status("INCOMING")
+                self.publish_status("INCOMING")
+                self.publish_status("INCOMING")
+                break
+
             elif answer == "NO":
                 self.publish_status("CLEAR")
 
