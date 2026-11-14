@@ -1,4 +1,5 @@
 
+import sys
 import time
 import rclpy
 
@@ -7,17 +8,18 @@ from std_msgs.msg import String
 from geometry_msgs.msg import TwistStamped
 
 
-FORWARD_SPEED = 0.1
 TURN_SPEED = 0.5
 # DECISION_TIMEOUT = 4.0
 MAX_TEST_DURATION = 30.0
-TURN_DURATION =  3.5
+TURN_DURATION = 3.5
 POST_TURN_FORWARD_DURATION = 4.0
 
 
 class MotionController(Node):
-    def __init__(self):
+    def __init__(self, forward_speed):
         super().__init__('motion_controller')
+
+        self.forward_speed = forward_speed
 
         # Publish movement commands
         self.publisher_ = self.create_publisher(
@@ -44,6 +46,10 @@ class MotionController(Node):
         # WAITING, FORWARD, TURN_LEFT,
         # AVOID_FORWARD, STOPPED
         self.state = "WAITING"
+
+        self.get_logger().info(
+            f"Forward speed set to {self.forward_speed} m/s"
+        )
 
     def listener_callback(self, msg):
         status = msg.data.strip().upper()
@@ -108,7 +114,7 @@ class MotionController(Node):
         #         self.state = "WAITING"
 
         if self.state == "FORWARD":
-            self.send_velocity(FORWARD_SPEED, 0.0)
+            self.send_velocity(self.forward_speed, 0.0)
 
         elif self.state == "TURN_LEFT":
             if now - self.phase_started < TURN_DURATION:
@@ -120,12 +126,12 @@ class MotionController(Node):
 
                 self.phase_started = now
                 self.state = "AVOID_FORWARD"
-                self.send_velocity(FORWARD_SPEED, 0.0)
+                self.send_velocity(self.forward_speed, 0.0)
 
         elif self.state == "AVOID_FORWARD":
             if (now - self.phase_started <
                     POST_TURN_FORWARD_DURATION):
-                self.send_velocity(FORWARD_SPEED, 0.0)
+                self.send_velocity(self.forward_speed, 0.0)
             else:
                 self.get_logger().info(
                     "Avoidance maneuver complete."
@@ -139,8 +145,19 @@ class MotionController(Node):
 
 
 def main():
-    rclpy.init()
-    node = MotionController()
+    # Get forward speed from terminal
+    if len(sys.argv) < 2:
+        print("Usage: ros2 run <package_name> motion_controller <forward_speed>")
+        sys.exit(1)
+
+    try:
+        forward_speed = float(sys.argv[1])
+    except ValueError:
+        print("Error: forward_speed must be a number.")
+        sys.exit(1)
+
+    rclpy.init(args=sys.argv[2:])
+    node = MotionController(forward_speed)
 
     try:
         rclpy.spin(node)
