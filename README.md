@@ -1,8 +1,8 @@
 # CYSE-492_3-Group13
-CYSE 492/493 [SPIRE-GRIDLOCK] Repo
+CYSE 492/493 SPIRE-GRIDLOCK Repo
 
 ## Directory:
-[GRIDLOCK Attacks] (./GRIDLOCK/)
+[GRIDLOCK Attacks](./GRIDLOCK/)
 
 [CSV Data](./CSV_Data/)
 
