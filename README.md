@@ -1,29 +1,74 @@
-# CYSE-492_3-Group13
-CYSE 492/493 SPIRE-GRIDLOCK Repo
+# GRIDLOCK Attack
 
 ## Directory:
 [GRIDLOCK Attacks](./GRIDLOCK/)
 
-[CSV Data](./CSV_Data/)
+[Experiment Data](./CSV_Data/)
 
-[Jupyter Notebooks (Documentation)](./Notebooks/)
+[Documentation](./Notebooks/)
 
-Below Follows the SPIRE-LOCO REPO
-# SUMMARY HERE
+## SUMMARY HERE
+Research Regarding the effectiveness of Cache Eviction based attacks on Visual Learning Models (VLMs) and Visual Language Action (VLA) Models running on NVIDIA Graphics Processing Units (GPUs). VLMs are attacked as stand alone models and while integrated to make robot motion decisions. A VLA model is attacked while making decisions to control robot motion.
 
-# HARDWARE/SOFTWARE REQUIREMENTS
+## HARDWARE/SOFTWARE REQUIREMENTS
+### Hardware
+NVIDIA Jetson AGX Orin
+* Running Jetson Linux 36.4 (Ubuntu 24.04)
+NVIDIA Jeton Orin Nano
+* Running Jetson Linux 36.4 (Ubuntu 24.04)
+Raspberry Pi 3 Model B+
+* Running Ubuntu 22.04
+TurtleBot3 Burger (2x)
 
-# VLM Setup Section
+### Software
+Ollama. Download and install from the instructions here: https://ollama.com/download/linux
+Robot Operating System 2 (ROS 2) Jazzy Jalisco Distro
+Robot Operatin System 2 (ROS 2) Humble Hawksbill Distro
 
-# Robot Operating System Set Up
+#### VLMs
+* Moondream
+* Qwen3-VL:2B
+* MiniCPM-v4.6
+* Aeline/Opan
+* SmolVLM2-2.2B
+* SmolVLM2-256M
+* SmolVLM2-500M
 
-# DDS SECTION
+#### VLA Model
+* SmolVLA-256M
 
-# GRIDLOCK
+## VLM Setup Section
+* To install the VLMs follow the syntax: 
+```bash
+ollama run [model]
+```
+* For the above VLMs:
+```bash
+ollama run moondream:latest
+ollama run qwen3-vl:2b
+ollama run aeline/opan
+ollama run ahmadwaqar/smolvlm2-2.2b-instruct
+ollama run ahmadwaqar/smolvlm2-256m-video:q8_0
+ollama run ahmadwaqar/smolvlm2-500m-video
+```
 
-## GRIDLOCK PIN
+## VLA Setup Section
 
-## GRIDLOCK SCAN
+## Robot Operating System / Turtlebot3 Set Up
+### For the NVIDIA Jetson AGX Orin:
+* Follow the instructions from here: https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
+* Then follow the instructions for the Quick Start Guide from here: https://docs.robotis.com/docs/systems/turtlebot3/overview/
 
-## GRIDLOCK DDS
+### For the Raspberry Pi 3 Model B+:
+* Follow the instructions from here: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+* Then follow the instructions for the Quick Start Guide from here: https://docs.robotis.com/docs/systems/turtlebot3/overview/
+
+## GRIDLOCK
+A Cache Eviction based attack on NVIDIA GPUs. The 3 attacks implemented are **GRIDLOCK PIN**, **GRIDLOCK SCAN**, and **GRIDLOCK DDS**
+
+### GRIDLOCK PIN
+
+### GRIDLOCK SCAN
+
+### GRIDLOCK DDS
 
